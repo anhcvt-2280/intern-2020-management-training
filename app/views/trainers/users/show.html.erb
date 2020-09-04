@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <img src="" class="card-img-top" alt="">
+      <% if @user.image.present? %>
+        <%= image_tag @user.image.url, class: "img-thumbnail" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="title bg-success p-3 text-light rounded mb-3">
+      <i class="fas fa-user-circle ml-2 fa-lg"></i>
+      <span class="font-weight-bold"><%= t ".label_info_user" %></span>
+    </div>
+    <div class="pl-2">
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_name" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= @user.name %></p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_email" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= @user.email %></p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".lable_university" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= @user.school_name %></p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_language" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= @user.program_language_name %></p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_birthday" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= @user.birthday %></p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_gender" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= gender @user %></p>
+        </div>
+      </div>
+    </div>
+    <div class="title bg-success p-3 text-light rounded mb-3 mt-3">
+      <i class="fas fa-briefcase ml-2 fa-lg"></i>
+      <span class="font-weight-bold"><%= t ".label_info_workplace" %></span>
+    </div>
+    <div class="pl-2">
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_position" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= @user.position_name %></p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_department" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= @user.department_name %></p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_office" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= @user.office_name %></p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2 col-form-label font-weight-bold">
+          <%= t ".label_role" %>
+        </span>
+        <div class="col-sm-10">
+          <p class="col-form-label"><%= role @user %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
