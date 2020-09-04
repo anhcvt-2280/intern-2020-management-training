@@ -51,7 +51,14 @@ class Trainers::CoursesController < TrainersController
     end
   end
 
-  def destroy; end
+  def destroy
+    if @course.destroy
+      flash[:success] = t "notice.success"
+    else
+      flash.now[:danger] = t "notice.error"
+    end
+    redirect_to trainers_courses_url
+  end
 
   private
 

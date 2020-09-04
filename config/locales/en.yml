@@ -118,6 +118,7 @@ en:
         days: "day"
         task: "Task"
         col_name: "Name"
+        label_delete: "Delete course"
   notice:
     error: "Something is wrong!"
     success: "Success"
