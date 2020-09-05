@@ -15,6 +15,8 @@ class Subject < ApplicationRecord
   has_many :topic_subjects, dependent: :destroy
   has_many :topics, through: :topic_subjects
 
+  mount_uploader :image, ImageUploader
+
   accepts_nested_attributes_for :tasks, allow_destroy: true,
                                 reject_if: :reject_tasks?
 
@@ -41,6 +43,7 @@ class Subject < ApplicationRecord
   scope :by_created_at, ->{order created_at: :desc}
   scope :order_priority, ->{order priority: :asc}
   scope :total_time_subjects, ->{sum :duration}
+  scope :by_id, ->(id){where id: id if id.present?}
 
   def started_at
     created_at.strftime Settings.validates.model.course.date_format

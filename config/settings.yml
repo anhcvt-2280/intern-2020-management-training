@@ -73,3 +73,9 @@ status:
     finished: 1
     postponed: 2
     opening: 3
+progress_course:
+  color:
+    level_one: "bg-dark"
+    level_two: "bg-warning"
+    level_three: "bg-info"
+    level_four: "bg-success"

@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 
     namespace :trainers do
       root "subjects#index"
-      resources :courses
+      resources :courses do
+        resources "user_courses", only: :show
+        resources "subject_courses", only: :show
+      end
       resources :topics, only: :index
       resources :search_trainees, only: :index
       resources :subjects, except: %i(edit update)

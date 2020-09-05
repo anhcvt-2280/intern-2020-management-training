@@ -1,0 +1,40 @@
+<div class="media mb-3 border p-2 rounded shadow-sm bg-white">
+  <% if @subject.image.present? %>
+    <%= image_tag @subject.image.url, class: "align-self-center border rounded mr-3" %>
+  <% end %>
+  <div class="media-body">
+    <h2 class="mt-0"><%= @subject.name %></h2>
+    <h5 class="mt-0">
+      <%= t ".name_course" %>
+      <span class="font-weight-bold"><%= @course.name %></span>
+    </h5>
+    <p>
+      <i class="fas fa-clock"></i> <%= @subject.started_at %>
+      <i class="fas fa-arrow-circle-right mx-2"></i>
+      <%= @subject.ended_at @subject.started_at %>
+      <small class="text-danger">(<%= t ".expiration" %>)</small>
+    </p>
+    <p><i class="fas fa-clock"></i> <%= @subject.duration %> <%= t ".days" %></p>
+    <p><%= @subject.note %></p>
+    <%= link_to trainers_course_path(@course), class: "badge  badge-pill badge-success font-weight-light p-2" do %>
+      <i class="fas fa-chevron-circle-left"></i> <%= t ".return" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="border rounded" >
+  <div>
+    <table class="table table-hover">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col" class="w-25"><% t ".col_name" %></th>
+        <th scope="col"><%= t ".progress" %></th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "/partials/courses/subject_courses/trainee_progress",
+                   collection: @users, as: :item, locals: {course: @course, subject: @subject} %>
+      </tbody>
+    </table>
+  </div>
+</div>

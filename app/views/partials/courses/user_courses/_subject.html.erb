@@ -8,24 +8,19 @@
       <i class="fas fa-arrow-circle-right mx-2"></i>
       <%= item.ended_at item.course_subjects.first.started_at %>
     </div>
-    <h3 class="mt-0">
-      <%= link_to trainers_course_subject_course_path course, item do %>
-        <%= item.name %>
-      <% end %>
-    </h3>
-    <h5 class="mt-0 font-weight-bold"><%= item.name %></h5>
-    <p class="text-success"><i class="fas fa-clock"></i> <%= item.duration %> days</p>
+    <h3 class="mt-0"><%= item.name %></h3>
+    <p><i class="fas fa-clock"></i> <%= item.duration %> days</p>
     <p><%= item.note %></p>
     <p>
       <button class="btn btn-outline-info w-25" type="button" data-toggle="collapse" data-target="#subject<%= item.id %>" aria-expanded="false" aria-controls="subject<%= item.id %>">
         <%= t "trainers.courses.show.task" %>
       </button>
     </p>
-    <div class="task-list w-75">
+    <div class="task-list">
       <div class="collapse" id="subject<%= item.id %>">
         <div class="card card-body">
           <ul class="list-group list-group-flush">
-              <%= render partial: "/partials/courses/show/task", collection: item.tasks,
+              <%= render partial: "/partials/courses/user_courses/task", collection: item.course_subjects.first.task_of_user(user_id),
                          as: :item %>
           </ul>
         </div>

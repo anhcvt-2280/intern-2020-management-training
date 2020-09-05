@@ -43,7 +43,7 @@
       </tr>
     </thead>
     <tbody id="subjects-tbody">
-      <%= render @subjects %>
+      <%= render @subjects, collection: @subjects, as: :subject %>
     </tbody>
   </table>
   <div id="paginator" class="text-center">

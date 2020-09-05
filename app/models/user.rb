@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :courses, through: :user_courses
   has_many :user_course_subject, dependent: :destroy
 
+  delegate :task_done, to: :user_course_subject
+
   validates :name, presence: true,
             length: {maximum: Settings.validates.model.user.name.max_length}
   validates :email, presence: true,

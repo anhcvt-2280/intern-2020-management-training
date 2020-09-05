@@ -1,0 +1,12 @@
+<li class="list-group-item">
+  <p>
+    <span class="mr-2">
+      <% if item.user_task_status.equal? 1 %>
+        <i class="fas fa-check text-success"></i>
+      <% else %>
+        <i class="fas fa-times text-danger"></i>
+      <% end %>
+    </span>
+    <%= item.name %>
+  </p>
+</li>

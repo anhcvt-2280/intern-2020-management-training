@@ -1,6 +1,11 @@
 <tr>
-  <th scope="row"><%= item.name %></th>
-  <% item.user_course_subject.each do |subject| %>
-    <td><%= subject.user_tasks.task_done.count[subject.id] %></td>
+  <th scope="row">
+    <%= link_to trainers_course_user_course_path course, item do%>
+      <%= item.name %>
+    <% end %>
+  </th>
+  <% item.task_done.each do |task| %>
+    <% task_percent = task_percent task.task_done, task.subject_id %>
+    <td class="text-light text-center <%= task_percent[:color] %>"><%= task_percent[:percent] %> %</td>
   <% end %>
 </tr>

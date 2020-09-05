@@ -1,5 +1,5 @@
 <li class="media border-bottom py-3 col-md-12">
-  <%= hidden_field_tag "course[subjects][]", item.id %>
+  <%= hidden_field_tag "course[course_subjects_attributes][#{item.id}][priority]", nil, class: "subject-priority"%>
   <% if item.image.present? %>
     <%= image_tag item.image.url, class: "align-self-center mr-3" %>
   <% end %>

@@ -14,8 +14,14 @@
     <% end %>
     <div class="card-body">
       <h5 class="card-title text-truncate">
-        <%= link_to trainee_course_path course do %>
-          <%= course.name %>
+        <% if trainer? %>
+          <%= link_to trainers_course_path course do %>
+            <%= course.name %>
+          <% end %>
+        <% else %>
+          <%= link_to trainee_course_path course do %>
+            <%= course.name %>
+          <% end %>
         <% end %>
       </h5>
       <% if trainee? %>
