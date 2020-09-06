@@ -1,0 +1,56 @@
+<div class="content-title d-flex justify-content-between mb-3">
+  <div class="title text-bold h4"> <%= icon "fas", "list-alt" %>
+    <%= t ".title" %>
+    <small class="text-muted">
+      (<span id="total-count-user"><%= @users.total_count %></span> <%= t ".label_user" %>)
+    </small>
+  </div>
+</div>
+<div class="form-group">
+  <div class="row">
+    <div class="col-4">
+      <%= text_field_tag "query", "", class: "form-control",
+                         id: "input-search-user",
+                         placeholder: t(".placeholder_search"),
+                         maxlength: Settings.validates.model.course.max_length,
+                         data: {url: trainers_users_path} %>
+    </div>
+    <button type="button" class="btn btn-success" id="search-user">
+      <i class="fas fa-search text-light"></i>
+      <%= t ".label_search" %>
+    </button>
+  </div>
+</div>
+<div class="zui-wrapper">
+  <div class="zui-scroller">
+    <table class="zui-table table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th class="zui-sticky-col"><%= t ".label_name" %></th>
+          <th><%= t ".label_email" %></th>
+          <th><%= t ".label_role" %></th>
+          <th><%= t ".label_gender" %></th>
+          <th><%= t ".label_birthday" %></th>
+          <th><%= t ".label_address" %></th>
+          <th><%= t ".label_language" %></th>
+          <th><%= t ".label_position" %></th>
+          <th><%= t ".label_department" %></th>
+          <th><%= t ".label_office" %></th>
+          <th><%= t ".label_university" %></th>
+          <th class="zui-sticky-col-right"><%= t ".label_action" %></th>
+        </tr>
+      </thead>
+      <tbody id="list-user">
+        <%= render partial: "/partials/users/index/user", collection: @users, as: :item %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="offset-6 col-6 mt-3">
+    <div id="paginator-user" class="text-center">
+      <%= paginate @users, theme: "twitter-bootstrap-4", pagination_class: "pagination-sm" %>
+    </div>
+  </div>
+</div>
+

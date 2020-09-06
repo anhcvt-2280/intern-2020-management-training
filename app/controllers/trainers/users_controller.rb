@@ -1,7 +1,18 @@
 class Trainers::UsersController < TrainersController
   before_action :logged_in_user, :trainer?
-  before_action :get_user, only: :show
+  before_action :get_user, only: %i(show destroy)
   before_action :get_data, only: %i(new create)
+
+  def index
+    @users = if params[:query].present?
+               User.by_name params[:query]
+             else
+               User
+             end
+    @users = @users.page(params[:page])
+                 .per Settings.pagination.course.default
+    respond_to :js, :html
+  end
 
   def new
     @user = User.new
@@ -19,6 +30,15 @@ class Trainers::UsersController < TrainersController
   end
 
   def show; end
+
+  def destroy
+    if @user.destroy
+      flash[:success] = t "notice.success"
+    else
+      flash.now[:danger] = t "notice.error"
+    end
+    redirect_to trainers_users_path
+  end
 
   private
 
