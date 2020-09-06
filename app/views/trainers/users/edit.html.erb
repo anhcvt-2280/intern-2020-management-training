@@ -1,0 +1,76 @@
+<div class="content-title d-flex justify-content-between">
+  <div class="title text-bold h4">
+    <i class="fas fa-user-edit"></i>
+    <%= t ".title" %>
+  </div>
+</div>
+<%= form_with model: @user, url: trainers_user_path, local: true,
+              class: "border rounded p-4", id: "form-course" do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :name, t(".label_name"), class: "label-required font-weight-bold" %>
+        <%= f.text_field :name, class: "form-control", required: true,
+                         placeholder: t(".label_name")%>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, t(".label_email"), class: "label-required font-weight-bold" %>
+        <%= f.email_field :email, class: "form-control", required: true,
+                          placeholder: t(".label_email")%>
+      </div>
+      <div class="form-group">
+        <%= f.label :date_of_birth, t(".label_birthday"), class: "label-required font-weight-bold" %>
+        <%= f.date_field :date_of_birth, class: "form-control", required: true,
+                         value: "2000-01-01",
+                         max: Time.zone.today.to_s %>
+      </div>
+      <div class="form-group">
+        <%= f.label :address, t(".label_address"), class: "font-weight-bold" %>
+        <%= f.text_field :address, class: "form-control",
+                         placeholder: t(".label_address")%>
+      </div>
+      <div class="form-group">
+        <%= f.label :program_language_id, t(".label_language"), class: "font-weight-bold label-required" %>
+        <%= f.collection_select :program_language_id, @program_language, :id, :name, {prompt: true}, {class: "form-control"} %>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :position_id, t(".label_position"), class: "font-weight-bold label-required" %>
+        <%= f.collection_select :position_id, @position, :id, :name, {prompt: true}, {class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :department_id, t(".label_department"), class: "font-weight-bold label-required" %>
+        <%= f.collection_select :department_id, @department, :id, :name, {prompt: true}, {class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :school_id, t(".label_school"), class: "font-weight-bold label-required" %>
+        <%= f.collection_select :school_id, @school, :id, :name, {prompt: true}, {class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :office_id, t(".label_office"), class: "font-weight-bold label-required" %>
+        <%= f.collection_select :office_id, @office, :id, :name, {prompt: true}, {class: "form-control"} %>
+      </div>
+      <div class="form-group">
+
+      </div>
+      <div class="form-check form-check-inline">
+        <%= radio_button :user, :gender, :male, class: "form-check-input", checked: "checked" %>
+        <%= f.label "gender_1", t(".label_gender_male"), class: "form-check-label " %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= radio_button :user, :gender, :female, class: "form-check-input" %>
+        <%= f.label "gender_0", t(".label_gender_female"), class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="col-11"></div>
+    <div class="col-1">
+      <%= f.submit t(".label_submit"), class: "btn btn-primary mb-2",
+                   data: {"disable-with": t(".label_saving")} %>
+    </div>
+    <%= f.hidden_field :password, value: "123456" %>
+    <%= f.hidden_field :password_confirmation, value: "123456" %>
+    <%= f.hidden_field :image %>
+  </div>
+<% end %>
