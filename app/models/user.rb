@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   USER_PARAMS_PERMIT = %i(name email password date_of_birth address gender
     program_language_id position_id department_id school_id office_id
-    image).freeze
+    image password_confirmation).freeze
   VALID_EMAIL_REGEX = Settings.REGEX.model.user.email
 
   has_many :user_courses, dependent: :destroy
@@ -41,6 +41,8 @@ class User < ApplicationRecord
   validates :office_id, presence: true
   validates :date_of_birth, presence: true
   validate :birthday_cannot_be_in_future, :birthday_old_men
+
+  mount_uploader :image, UserUploader
 
   enum role: {trainee: 0, trainer: 1}, _prefix: true
   enum gender: {male: 1, female: 0}, _prefix: true

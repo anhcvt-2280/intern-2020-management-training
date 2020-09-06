@@ -56,11 +56,11 @@
 
       </div>
       <div class="form-check form-check-inline">
-        <%= radio_button :user, :gender, 1, class: "form-check-input", checked: "checked" %>
+        <%= radio_button :user, :gender, :male, class: "form-check-input", checked: "checked" %>
         <%= f.label "gender_1", t(".label_gender_male"), class: "form-check-label " %>
       </div>
       <div class="form-check form-check-inline">
-        <%= radio_button :user, :gender, 0, class: "form-check-input" %>
+        <%= radio_button :user, :gender, :female, class: "form-check-input" %>
         <%= f.label "gender_0", t(".label_gender_female"), class: "form-check-label" %>
       </div>
     </div>
@@ -71,5 +71,6 @@
     </div>
     <%= f.hidden_field :password, value: "123456" %>
     <%= f.hidden_field :password_confirmation, value: "123456" %>
+    <%= f.hidden_field :image %>
   </div>
 <% end %>
