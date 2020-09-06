@@ -16,7 +16,7 @@
   <td><%= item.school_name %></td>
   <td class="zui-sticky-col-right text-center">
     <% if item.role_trainee? %>
-        <i class="fas fa-trash-alt text-danger mx-2 trash-user" id="delete-user" data-url="<%= trainers_user_path item %>"></i>
+        <i class="fas fa-trash-alt text-danger mx-2 trash-user delete-user" data-url="<%= trainers_user_path item %>"></i>
     <% end %>
     <%= link_to edit_trainers_user_path item do %>
       <i class="fas fa-user-edit text-info mx-2"></i>
