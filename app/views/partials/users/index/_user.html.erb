@@ -1,0 +1,25 @@
+<tr>
+  <td class="zui-sticky-col">
+    <%= link_to trainers_user_path item do %>
+      <%= item.name %>
+    <% end %>
+  </td>
+  <td><%= item.email %></td>
+  <td><%= role item %></td>
+  <td><%= gender item  %></td>
+  <td><%= item.birthday %></td>
+  <td><%= item.address %></td>
+  <td><%= item.program_language_name %></td>
+  <td><%= item.position_name %></td>
+  <td><%= item.department_name %></td>
+  <td><%= item.office_name %></td>
+  <td><%= item.school_name %></td>
+  <td class="zui-sticky-col-right text-center">
+    <% if item.role_trainee? %>
+        <i class="fas fa-trash-alt text-danger mx-2 trash-user" id="delete-user" data-url="<%= trainers_user_path item %>"></i>
+    <% end %>
+    <%= link_to edit_trainers_user_path item do %>
+      <i class="fas fa-user-edit text-info mx-2"></i>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,3 @@
+$("#list-user").html("<%= j render partial: "/partials/users/index/user", collection: @users, as: :item %>");
+$("#paginator-user").html("<%= j paginate @users, remote: true, theme: "twitter-bootstrap-4", pagination_class: "pagination-sm" %>");
+$("#total-count-user").html("<%= j @users.total_count %>")

@@ -6,6 +6,18 @@ class User < ApplicationRecord
   has_many :courses, through: :user_courses
   has_many :user_course_subject, dependent: :destroy
 
+  belongs_to :school
+  belongs_to :program_language
+  belongs_to :position
+  belongs_to :department
+  belongs_to :office
+
+  delegate :name, to: :school, prefix: true
+  delegate :name, to: :program_language, prefix: true
+  delegate :name, to: :position, prefix: true
+  delegate :name, to: :department, prefix: true
+  delegate :name, to: :office, prefix: true
+
   validates :name, presence: true,
             length: {maximum: Settings.validates.model.user.name.max_length}
   validates :email, presence: true,
@@ -17,9 +29,14 @@ class User < ApplicationRecord
             allow_nil: true
 
   enum role: {trainee: 0, trainer: 1}, _prefix: true
+  enum gender: {male: 1, female: 0}, _prefix: true
 
   scope :by_name, ->(name){where("name LIKE ?", "%#{name}%") if name.present?}
   scope :exclude_ids, ->(ids){where.not id: ids if ids.present?}
 
   has_secure_password
+
+  def birthday
+    date_of_birth.strftime Settings.validates.model.course.date_format
+  end
 end

@@ -219,4 +219,30 @@ $(document).on('turbolinks:load', function () {
     });
   }
   // End Feature Priority
+
+  // Search user
+  $('#input-search-user').on('keydown', function (e) {
+    if (e.which === 13) {
+      searchUserByQuery($(this).data('url'), $(this).val())
+    }
+  });
+
+  $('#search-user').on('click', function (e) {
+    e.preventDefault();
+    let inputSearch = $("#input-search-user");
+    if( inputSearch.val() !== '') {
+      searchUserByQuery(inputSearch.data('url'), inputSearch.val())
+    }
+  });
+
+  function searchUserByQuery(url, query) {
+    $.ajax({
+      url: url,
+      method: 'GET',
+      data: {
+        query: query
+      }
+    });
+  }
+  // End search user
 });

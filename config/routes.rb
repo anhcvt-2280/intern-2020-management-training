@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :topics, only: :index
       resources :search_trainees, only: :index
       resources :subjects, except: %i(edit update)
+      resources :users
     end
     
     namespace :trainee do
