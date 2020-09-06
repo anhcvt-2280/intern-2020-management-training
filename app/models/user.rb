@@ -20,7 +20,6 @@ class User < ApplicationRecord
   delegate :name, to: :position, prefix: true
   delegate :name, to: :department, prefix: true
   delegate :name, to: :office, prefix: true
-
   delegate :task_done, to: :user_course_subjects
 
   belongs_to :school

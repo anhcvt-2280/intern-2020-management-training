@@ -1,7 +1,7 @@
 class Trainers::UsersController < TrainersController
   before_action :logged_in_user, :trainer?
-  before_action :get_user, only: %i(show destroy)
-  before_action :get_data, only: %i(new create)
+  before_action :get_user, except: %i(index new create)
+  before_action :get_data, except: %i(index show destroy)
 
   def index
     @users = if params[:query].present?
@@ -30,6 +30,18 @@ class Trainers::UsersController < TrainersController
   end
 
   def show; end
+
+  def edit; end
+
+  def update
+    if @user.update user_params
+      flash[:success] = t "notice.success"
+      redirect_to trainers_user_path @user
+    else
+      flash.now[:danger] = t "notice.error"
+      render :edit
+    end
+  end
 
   def destroy
     if @user.destroy
