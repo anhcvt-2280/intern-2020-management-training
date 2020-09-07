@@ -4,14 +4,14 @@ module SubjectsHelper
   end
 
   def task_percent complete_task, subject_id
-    total_task = Subject.by_id(subject_id).first.tasks.count
+    total_task = Subject.by_id(subject_id).first.tasks.size
     if total_task.equal? 0
       return {color: Settings.progress_course.color.level_one, percent: 0}
     end
 
-    percent = complete_task / total_task * 100
+    percent = complete_task.to_f / total_task.to_f * 100
 
-    {percent: percent, color: color_by_percent(percent)}
+    {percent: percent.round(2), color: color_by_percent(percent)}
   end
 
   def color_by_percent percent

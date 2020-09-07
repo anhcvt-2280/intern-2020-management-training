@@ -20,7 +20,8 @@
       <div class="collapse" id="subject<%= item.id %>">
         <div class="card card-body">
           <ul class="list-group list-group-flush">
-              <%= render partial: "/partials/courses/user_courses/task", collection: item.course_subjects.first.task_of_user(user_id),
+            <%# binding.pry %>
+              <%= render partial: "/partials/courses/user_courses/task", collection: item.course_subjects.by_course(course_id).first.task_of_user(user_id),
                          as: :item %>
           </ul>
         </div>

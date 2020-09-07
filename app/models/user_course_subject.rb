@@ -20,6 +20,6 @@ class UserCourseSubject < ApplicationRecord
         .where(user_course_subjects: {user_id: user_id})
   end)
   scope :by_subject, (lambda do |id|
-    where user_course_subjects: {course_subject_id: id} if id.present?
+    where course_subjects: {subject_id: id} if id.present?
   end)
 end

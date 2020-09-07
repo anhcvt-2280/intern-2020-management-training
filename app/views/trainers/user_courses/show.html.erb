@@ -38,7 +38,7 @@
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
     <ul class="list-unstyled p-3">
       <%= render partial: "/partials/courses/user_courses/subject", collection: @subjects,
-                 as: :item, locals: {user_id: @user.id} %>
+                 as: :item, locals: {user_id: @user.id, course_id: @course.id} %>
     </ul>
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
