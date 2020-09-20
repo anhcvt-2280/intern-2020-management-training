@@ -8,6 +8,10 @@
       <%= t ".btn_add" %>
       <%= icon "fas", "plus" %>
     <% end %>
+    <%= link_to trainers_import_users_path, method: :post, type: "button", class: "btn btn-success btn-sm" do %>
+      <%= "Add multiple user" %>
+      <%= icon "fas", "plus" %>
+    <% end %>
   </div>
 </div>
 <div class="form-group">

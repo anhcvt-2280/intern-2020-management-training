@@ -1,4 +1,6 @@
+require "sidekiq/web"
 Rails.application.routes.draw do
+  mount Sidekiq::Web => "/sidekiq"
   scope "(:locale)", locale: /en|vi/ do
     root "sessions#new"
 
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
       resources :search_trainees, only: :index
       resources :subjects
       resources :users
+      resources "import_users", only: :create
     end
 
     namespace :trainee do
