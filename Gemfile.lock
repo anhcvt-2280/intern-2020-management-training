@@ -63,9 +63,7 @@ GEM
     ast (2.4.1)
     autoprefixer-rails (9.8.6.3)
       execjs
-    backport (1.1.2)
     bcrypt (3.1.16)
-    benchmark (0.1.0)
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -82,6 +80,7 @@ GEM
     bundler-audit (0.7.0.1)
       bundler (>= 1.2.0, < 3)
       thor (>= 0.18, < 2)
+    cancancan (3.1.0)
     capybara (3.33.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -158,7 +157,6 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5, >= 1.5.2)
-    e2mmap (0.1.0)
     erubi (1.9.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -216,7 +214,6 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    maruku (0.7.3)
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
@@ -298,8 +295,6 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    reverse_markdown (2.0.0)
-      nokogiri
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.2)
@@ -353,20 +348,6 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
-    solargraph (0.39.15)
-      backport (~> 1.1)
-      benchmark
-      bundler (>= 1.17.2)
-      e2mmap
-      jaro_winkler (~> 1.5)
-      maruku (~> 0.7, >= 0.7.3)
-      nokogiri (~> 1.9, >= 1.9.1)
-      parser (~> 2.3)
-      reverse_markdown (>= 1.0.5, < 3)
-      rubocop (~> 0.52)
-      thor (~> 1.0)
-      tilt (~> 2.0)
-      yard (~> 0.9, >= 0.9.24)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -409,7 +390,6 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.25)
     zeitwerk (2.4.0)
 
 PLATFORMS
@@ -422,6 +402,7 @@ DEPENDENCIES
   bootstrap (~> 4.5, >= 4.5.2)
   bootstrap4-kaminari-views (~> 1.0, >= 1.0.1)
   bundle-audit
+  cancancan
   capybara (>= 2.15)
   carrierwave (~> 2.1)
   cocoon (~> 1.2, >= 1.2.14)
@@ -454,7 +435,6 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   simplecov
-  solargraph
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets-rails (= 2.3.3)

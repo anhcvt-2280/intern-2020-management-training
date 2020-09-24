@@ -276,6 +276,7 @@ en:
     error: "Something is wrong!"
     success: "Success"
     email: "is not an email"
+    authorize: "Oops, you are not authorized!"
   model:
     subject:
       val_img_type: "Uploaded file is not a valid image. Only: .jpeg, .png, .gif"

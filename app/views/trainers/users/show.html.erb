@@ -2,7 +2,7 @@
   <div class="title text-bold h4">
     <i class="fas fa-user-edit"></i>
     <%= t ".title" %>
-    <%= link_to edit_trainers_user_path(current_user), type: "button", class: "btn btn-success btn-sm" do %>
+    <%= link_to edit_trainers_user_path(@user), type: "button", class: "btn btn-success btn-sm" do %>
       <%= t ".label_btn_edit" %>
       <i class="fas fa-edit"></i>
     <% end %>
