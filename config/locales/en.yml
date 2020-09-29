@@ -182,6 +182,11 @@ en:
         label_trainee: "Trainee"
         total_task: "Total task"
         return: "Return to course"
+        label_cmt: "Evaluations"
+        btn_submit_cmt: "Comment"
+        ago: "ago"
+        btn_reply: "Reply"
+        btn_delete: "Delete"
     users:
       index:
         title: "All user"
@@ -386,6 +391,11 @@ en:
     role:
       trainer: "trainer"
       trainee: "trainee"
+    notice:
+      confirm_title: "Are you sure?"
+      confirm_text: "You will not be able to recover this item!"
+      btn_confirm: "Yes, delete it!"
+      btn_cancel: "Cancel!"
   trainee:
     courses:
       index:
@@ -396,6 +406,8 @@ en:
         sub_title: "Course details"
         subject_tab: "Subjects"
         trainee_tab: "Trainees"
+        label_cmt: "Evaluations"
+        btn_cmt: "Comment"
       course_info:
         expected: "( Expected )"
         lastest_update: "Lastest updated: %{time}"

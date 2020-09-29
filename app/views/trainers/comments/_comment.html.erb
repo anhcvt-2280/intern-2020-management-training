@@ -1,0 +1,34 @@
+<div class="media my-4" id="cmt-<%= item.id %>">
+  <img src="#" class="mr-3 border rounded avatar-cmt" alt="avatar">
+  <div class="media-body" id="body-cmt-<%= item.id %>">
+    <h5 class="mt-0 name-cmt">
+      <%= item.user.name %>
+      <small class="text-muted">
+        <%= time_ago_in_words item.created_at %> <%= t "trainers.user_courses.show.ago" %>
+      </small>
+    </h5>
+    <div class="cmt-content">
+      <p><%= item.content %></p>
+    </div>
+    <div id="wrap-action">
+      <span class="btn-reply"><%= t "trainers.user_courses.show.btn_reply" %></span>
+      <% if can? :destroy, item %>
+        <span class="btn-delete-cmt" data-url="<%= trainers_comment_path item.id %>" data-cmt="<%= item.id %>">
+          <%= t "trainers.user_courses.show.btn_delete" %>
+        </span>
+      <% end %>
+    </div>
+    <div id="wrap-form-reply" style="display: none">
+      <%= form_with scope: :comment, url: trainers_comment_comments_path(item.id), method: :post do |f| %>
+        <%= f.text_area :content, class: "form-control", rows: "3", value: ""%>
+        <%= f.button t("trainers.user_courses.show.btn_submit_cmt"),
+                     class: "btn btn-primary my-2 btn-sm btn-secondary btn-cmt-submit" %>
+      <% end %>
+    </div>
+    <% if item.comments.present? %>
+      <div id="wrap-cmt-child">
+        <%= render partial: "trainers/comments/comment_child", collection: item.comments, as: :item %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -33,6 +33,11 @@
       <i class="fas fa-tasks"></i> <%= t ".progress" %>
     </a>
   </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="cmt-tab" data-toggle="tab" href="#cmt" role="tab" aria-controls="cmt" aria-selected="false">
+      <i class="fas fa-comments"></i> <%= t ".label_cmt" %>
+    </a>
+  </li>
 </ul>
 <div class="tab-content border rounded" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -58,5 +63,24 @@
         <%= render partial: "/partials/courses/show/trainee_progress", locals: {item: @user, course: @course} %>
       </tbody>
     </table>
+  </div>
+  <div class="tab-pane fade p-3" id="cmt" role="tabpanel" aria-labelledby="cmt-tab">
+    <div id="box-cmt">
+      <div class="media">
+        <img src="#" class="mr-3 border rounded avatar-cmt" alt="avatar">
+        <div class="media-body">
+          <%= form_with scope: :comment, url: trainers_course_user_course_comments_path(@course.id, @user.id), method: :post do |f| %>
+            <%= f.text_area :content, class: "form-control", rows: "3" %>
+            <%= f.button t(".btn_submit_cmt"), class: "btn my-2 btn-sm btn-secondary btn-cmt-submit" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div id="wrap-comment">
+      <%= render partial: "trainers/comments/comment", collection: @comments, as: :item %>
+      <div id="paginator-cmt" class="text-center">
+        <%= paginate @comments, theme: "twitter-bootstrap-4", pagination_class: "pagination-sm", remote: true %>
+      </div>
+    </div>
   </div>
 </div>

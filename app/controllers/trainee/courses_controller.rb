@@ -1,6 +1,6 @@
 class Trainee::CoursesController < TraineesController
   before_action :authenticate_user!, :store_location
-  before_action :get_course, only: :show
+  before_action :get_course, :load_comments, only: :show
 
   load_and_authorize_resource
 
@@ -22,5 +22,13 @@ class Trainee::CoursesController < TraineesController
 
   def get_course
     @course = Course.find params[:id]
+  end
+
+  def load_comments
+    @user_course = UserCourse.find_by course_id: @course.id,
+                                      user_id: current_user.id
+    @comments = @user_course.comments.order_by_created_at
+                            .page(params[:page])
+                            .per Settings.pagination.course.default
   end
 end

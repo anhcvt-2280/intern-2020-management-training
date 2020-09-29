@@ -1,0 +1,6 @@
+<% if @comment.parent_id.present? %>
+  $("#body-cmt-<%= @comment.parent_id %>").append("<%= j render "trainers/comments/comment_child", item: @comment %>")
+<% else %>
+  $("#wrap-comment").append("<%= j render "comment", item: @comment %>")
+<% end %>
+$("#cmt form").trigger("reset");

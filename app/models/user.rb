@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :courses, through: :user_courses
   has_many :user_course_subjects, dependent: :destroy
   has_many :reports, dependent: :destroy
+  has_many :comments, dependent: :destroy
   belongs_to :school
   belongs_to :program_language
   belongs_to :position

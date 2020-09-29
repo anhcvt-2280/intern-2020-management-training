@@ -1,0 +1,21 @@
+<div class="media my-3" id="cmt-<%= item.id %>">
+  <img src="#" class="mr-3 border rounded avatar-cmt" alt="avatar">
+  <div class="media-body">
+    <h5 class="mt-0 name-cmt">
+      <%= item.user.name %>
+      <small class="text-muted">
+        <%= time_ago_in_words item.created_at %> <%= t "trainers.user_courses.show.ago" %>
+      </small>
+    </h5>
+    <div class="cmt-content">
+      <p><%= item.content %></p>
+    </div>
+    <div id="child-wrap-action">
+      <% if can? :destroy, item %>
+        <span class="btn-delete-cmt" data-url="<%= trainers_comment_path item.id %>" data-cmt="<%= item.id %>">
+          <%= t "trainers.user_courses.show.btn_delete" %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>

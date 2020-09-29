@@ -4,6 +4,7 @@ class UserCourse < ApplicationRecord
   belongs_to :user
   belongs_to :course
   has_many :user_course_subjects, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   scope :by_course, ->(id){where course_id: id if id.present?}
 

@@ -20,6 +20,13 @@
         <%= "\(#{@trainees.total_count}\)" %>
       <% end %>
     </li>
+    <li class="nav-item">
+      <%= link_to "#cmt", class: "nav-link", id: "cmt-tab", "data-toggle": "tab",
+                  role: "tab", "aria-controls": "cmt", "aria-selected": "false" do %>
+        <i class="fas fa-comments"></i>
+        <%= t ".label_cmt" %>
+      <% end %>
+    </li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="subjects" role="tabpanel" aria-labelledby="subjects-tab">
@@ -40,6 +47,31 @@
         </h4>
         <div id="list-trainees" class="pb-2">
           <%= render "trainee_tbl", trainees: @trainees %>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="cmt" role="tabpanel" aria-labelledby="cmt-tab">
+      <div class="container-fluid pb-3">
+        <h4 class="py-4">
+          <%= icon "fas", "angle-right" %>
+          <%= t ".label_cmt" %>
+        </h4>
+        <div id="box-cmt">
+          <div class="media">
+            <img src="#" class="mr-3 border rounded avatar-cmt" alt="avatar">
+            <div class="media-body">
+              <%= form_with scope: :comment, url: trainers_course_user_course_comments_path(@course.id, current_user.id), method: :post do |f| %>
+                <%= f.text_area :content, class: "form-control", rows: "3" %>
+                <%= f.button t(".btn_cmt"), class: "btn my-2 btn-sm btn-secondary btn-cmt-submit" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div id="wrap-comment">
+          <%= render partial: "trainers/comments/comment", collection: @comments, as: :item %>
+          <div id="paginator-cmt" class="text-center">
+            <%= paginate @comments, theme: "twitter-bootstrap-4", pagination_class: "pagination-sm", remote: true %>
+          </div>
         </div>
       </div>
     </div>

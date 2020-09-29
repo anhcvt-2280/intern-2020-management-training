@@ -203,7 +203,8 @@ body {
   width: 100px;
 }
 
-.trash-user, #profile {
+.trash-user, #profile, .btn-reply,
+.btn-delete-cmt, .btn-edit-cmt{
   cursor: pointer;
 }
 
@@ -224,4 +225,26 @@ body {
 
 #img-preview {
   display: block;
+}
+
+.btn-reply, .btn-edit-cmt, .btn-delete-cmt {
+  color: #5d5c5c;
+  font-size: 12px;
+  &:hover {
+    color: #0c0c0c;
+  }
+}
+
+.name-cmt {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cmt-content, #wrap-form-reply textarea{
+  font-size: 14px;
+}
+
+.avatar-cmt {
+  width: 70px;
+  height: 70px;
 }

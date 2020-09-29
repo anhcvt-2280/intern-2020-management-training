@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     namespace :trainers do
       root "subjects#index"
       resources :courses do
-        resources "user_courses", only: :show
+        resources "user_courses", only: :show do
+          resources :comments, only: %i(create destroy)
+        end
         resources "subject_courses", only: :show
       end
       resources :topics, only: :index
@@ -15,6 +17,9 @@ Rails.application.routes.draw do
       resources :subjects
       resources :users
       resources "import_users", only: :create
+      resources :comments, only: :destroy do
+        resources :comments, only: %i(create destroy)
+      end
     end
 
     namespace :trainee do

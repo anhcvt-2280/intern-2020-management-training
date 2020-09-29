@@ -4,6 +4,7 @@ require('@rails/activestorage').start()
 require('channels')
 require('jquery')
 require('bootstrap')
+require('../../custom/trainer/user_course')
 import I18n from 'i18n-js';
 global.I18n = I18n;
 global.toastr = require('toastr');
