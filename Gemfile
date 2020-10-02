@@ -38,6 +38,7 @@ gem "webpacker", "~> 4.0"
 gem "whenever", require: false
 
 group :development, :test do
+  gem "bullet"
   gem "bundle-audit"
   gem "factory_bot_rails"
   gem "pry"

@@ -25,7 +25,7 @@
       <div class="collapse" id="subject<%= item.id %>">
         <div class="card card-body">
           <ul class="list-group list-group-flush">
-              <%= render partial: "/partials/courses/show/task", collection: item.tasks,
+              <%= render partial: "/partials/courses/show/task", collection: Subject.task_of_subject(item.id),
                          as: :item %>
           </ul>
         </div>

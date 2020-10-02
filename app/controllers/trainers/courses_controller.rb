@@ -71,6 +71,10 @@ class Trainers::CoursesController < TrainersController
   end
 
   def load_data
+    @test = Subject.task_of_subject 1
+    @test2 = Subject.includes :tasks, :topics
+    @preload =
+    binding.pry
     @subjects = @course.subjects.order_priority
     @users = @course.users
   end

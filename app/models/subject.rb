@@ -60,6 +60,7 @@ class Subject < ApplicationRecord
                    .having("COUNT(tasks.id) >= ?", min)
     end
   end)
+  scope :task_of_subject, ->(subject_id){includes(:tasks).where("tasks.subject_id = ?", subject_id).references(:tasks)}
 
   ransack_alias :brief, :name_or_note
 

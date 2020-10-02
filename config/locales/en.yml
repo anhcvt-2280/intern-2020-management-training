@@ -534,5 +534,5 @@ en:
       link: "link to update"
       hello: "Hello"
       reminder_content: "Your subject: %{subject_name} in joined course %{course_name} will expire in %{deadline}"
-      please_finish_html: "Click <a href=\'%{link}\' >Doing task</a> to doing task!"
+      please_finish_html: "Click <a href=\"%{link}\" >Doing task</a> to doing task!"
       doing: "Doing"
