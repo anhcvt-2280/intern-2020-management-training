@@ -35,6 +35,7 @@ gem "sprockets-rails", "2.3.3"
 gem "toastr-rails"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
+gem "whenever", require: false
 
 group :development, :test do
   gem "bundle-audit"

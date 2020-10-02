@@ -61,7 +61,7 @@ RSpec.describe Course, type: :model do
     end
 
     it "order by status" do
-      expect(Course.order_by_status.pluck(:id)).to eq [course_two.id, course_three.id]
+      expect(Course.order_by_status.pluck(:id)).to eq [course_three.id, course_two.id]
     end
   end
 

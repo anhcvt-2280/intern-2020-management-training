@@ -22,6 +22,7 @@ class CourseSubject < ApplicationRecord
   scope :by_course_and_subject, (lambda do |course_id, subject_id|
     find_by course_id: course_id, subject_id: subject_id
   end)
+  scope :opening_course, ->{joins(:course).where courses: {status: :opening}}
 
   def started_at
     start_date.strftime Settings.validates.model.course.date_format

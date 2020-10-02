@@ -13,6 +13,7 @@ class UserCourseSubject < ApplicationRecord
   enum status: {inprogress: 0, done: 1}
 
   scope :status, ->(status){where status: status if status.present?}
+  scope :status_fb, ->(status){find_by status: status}
   scope :task_done, (lambda do |course_id|
     select("COUNT(user_tasks.user_course_subject_id) AS task_done_user,
            	course_subjects.subject_id")
@@ -30,6 +31,12 @@ class UserCourseSubject < ApplicationRecord
   scope :by_user, ->(user_id){where user_id: user_id if user_id.present?}
   scope :by_subject, (lambda do |subject_id|
     where course_subjects: {subject_id: subject_id} if subject_id.present?
+  end)
+  scope :opening_course, (lambda do
+    joins(:course_subject).merge CourseSubject.opening_course
+  end)
+  scope :deadline_between, (lambda do |date_from, date_to|
+    where("deadline <= ? and deadline >= ?", date_to, date_from)
   end)
 
   private

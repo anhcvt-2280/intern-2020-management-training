@@ -1,0 +1,10 @@
+<h3><%= t ".reminder_title" %></h3>
+<p><%= t ".hello" %> <%= @user.name %></p>
+<p>
+  <% course = @course_subject.course %>
+  <% subject = @course_subject.subject %>
+  <%= t (".reminder_content"), course_name: course.name, subject_name: subject.name, deadline: @user_course_subject.deadline %>
+  <div>
+    <%= link_to t(".doing"), trainee_course_subject_url(course_id: course.id, id: subject.id) %>
+  </div>
+</p>

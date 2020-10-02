@@ -104,3 +104,4 @@ sidekiq:
   delay_time: 1
   wait: 30
 done_percentage: 100.0
+time_reminder: 7

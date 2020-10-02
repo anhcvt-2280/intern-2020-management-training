@@ -7,7 +7,7 @@ class Trainers::ImportUsersController < TrainersController
     full_path_file = "public" + upload_file.to_s
     AddUserByExcelJob.set(wait: Settings.sidekiq.delay_time.minute)
                      .perform_later full_path_file
-    flash[:sucess] = t "notice.success"
+    flash[:success] = t "notice.success"
     redirect_to trainers_users_path
   rescue CarrierWave::IntegrityError
     flash[:danger] = t "notice.error"
@@ -19,7 +19,7 @@ class Trainers::ImportUsersController < TrainersController
   def import_user_param
     return if params[:import_user][:file]
 
-    flash[:danger] = t "notice.error"
+    flash[:error] = t "notice.error"
     redirect_to trainers_users_path
   end
 
